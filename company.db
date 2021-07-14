@@ -1,0 +1,515 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 08, 2020 at 10:52 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.2
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `company`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `anocon`
+--
+
+CREATE TABLE `anocon` (
+  `NUMANO` int(11) NOT NULL,
+  `ANO` varchar(80) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `avion`
+--
+
+CREATE TABLE `avion` (
+  `NUMAV` int(11) NOT NULL,
+  `TYPAV` varchar(15) NOT NULL,
+  `DATMS` date DEFAULT NULL,
+  `SITUATION` varchar(20) NOT NULL DEFAULT 'pret',
+  `NBHDDREV` varchar(15) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `avion`
+--
+
+INSERT INTO `avion` (`NUMAV`, `TYPAV`, `DATMS`, `SITUATION`, `NBHDDREV`) VALUES
+(1, 'A300', '2020-03-04', 'pret', '4:10'),
+(2, 'A200', '2020-03-07', 'pret', '00:00'),
+(3, 'A100', '2020-03-04', 'pret', '13:00'),
+(4, 'A400', '2020-03-04', 'pret', '2:00'),
+(5, 'A300', '2020-03-05', 'pret', '00:00'),
+(6, 'A600', '2020-03-08', 'pret', '00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `emp`
+--
+
+CREATE TABLE `emp` (
+  `NUMEMP` int(11) NOT NULL,
+  `NOMEMP` varchar(50) DEFAULT NULL,
+  `PREEMP` varchar(50) DEFAULT NULL,
+  `TELEMP` varchar(30) DEFAULT NULL,
+  `ADRESSE` varchar(50) NOT NULL,
+  `DATEMB` date DEFAULT NULL,
+  `SALEMP` double DEFAULT NULL,
+  `FONCTION` varchar(50) DEFAULT NULL,
+  `est_navigue` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `emp`
+--
+
+INSERT INTO `emp` (`NUMEMP`, `NOMEMP`, `PREEMP`, `TELEMP`, `ADRESSE`, `DATEMB`, `SALEMP`, `FONCTION`, `est_navigue`) VALUES
+(1, 'REHAMNIA', 'WALID', '06.76.07.12.62', 'ANNABA', '2020-02-17', 80000, 'INFORMATECIEN', 0),
+(2, 'ASSOUS', 'ILYESS', '05.50.60.34.23', 'BERAHHAL', '2020-02-17', 39000, 'MECHANISIEN', 0),
+(3, 'LATRECH', 'YOUNESS', '06.56.34.89.02', 'SIDI AMAR', '2020-02-17', 40000, 'MECHANICIEN', 0),
+(4, 'ZOUICH', 'ZAKI', '06.34.78.23.36', 'ELHADJAR', '2020-02-17', 90000, 'PILOTE', 1),
+(5, 'RACHEDI', 'SOUHAIL', '07.45.23.09.25', 'ELHADJAR - ANNABA-', '2020-02-19', 60000, 'administratif', 0),
+(6, 'MENAA', 'RAMY', '05.34.78.23.64', 'ANNABA', '2020-02-19', 80000.45, 'steward', 1),
+(7, 'CHELBI', 'WALID', '05.34.68.21.09', 'SIDI AMAR -ANNABA-', '2020-02-19', 10000.234, 'hôtesse', 1),
+(8, 'BOULEKSAA', 'HICHEM', '06.69.12.47.56', 'HDJAR EDDIS SIDI AMAR -ANNABA-', '2016-09-24', 40000.53, 'ADMINISTRATIF', 0),
+(11, 'DELLADJI', 'IBRAHIM', '06.45.23.45.23', 'ANNABA', '2020-02-22', 1000000, 'INGENIEUR', 0),
+(12, 'Aloyere', 'Youcef', '05.58.53.60.65', 'SIDI AMAR -ANNABA-', '2020-03-07', 50000, 'Mécanicien', 1),
+(13, 'Weffai', 'Sabri', '05.34.23.55.78', 'SIDI AMAR', '2020-03-07', 45000, 'Mécanicien', 1),
+(14, 'Ben Atia', 'Wassim', '06.34.56.10.76', 'SIDI AMAR', '2020-03-07', 80000, 'INFORMATECIEN', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `escale`
+--
+
+CREATE TABLE `escale` (
+  `NUMESC` int(11) NOT NULL,
+  `VILESC` varchar(80) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `escale`
+--
+
+INSERT INTO `escale` (`NUMESC`, `VILESC`) VALUES
+(1, 'ANNABA'),
+(2, 'Constantine'),
+(3, 'Batna'),
+(4, 'Biskra'),
+(5, 'Ouargla'),
+(6, 'SETIF'),
+(7, 'Tindouf'),
+(8, 'ALGER'),
+(9, 'Tebessa'),
+(10, 'Adrar');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jvol`
+--
+
+CREATE TABLE `jvol` (
+  `jour` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `jvol`
+--
+
+INSERT INTO `jvol` (`jour`) VALUES
+('2020-01-01'),
+('2020-01-10'),
+('2020-02-28'),
+('2020-03-03'),
+('2020-03-05'),
+('2020-03-06'),
+('2020-03-07'),
+('2020-03-10'),
+('2020-03-18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orgcha`
+--
+
+CREATE TABLE `orgcha` (
+  `NUMORG` int(11) NOT NULL,
+  `ORG` varchar(80) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `raptxt`
+--
+
+CREATE TABLE `raptxt` (
+  `NUMTXT` int(11) NOT NULL,
+  `DATREV` date DEFAULT NULL,
+  `NBHREV` varchar(8) DEFAULT NULL,
+  `AVIONREV` int(11) DEFAULT NULL,
+  `ECRETEUR` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `repeff`
+--
+
+CREATE TABLE `repeff` (
+  `NUMREP` int(11) NOT NULL,
+  `REP` varchar(80) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `r_equi`
+--
+
+CREATE TABLE `r_equi` (
+  `equempv` int(11) NOT NULL,
+  `equvol` int(11) NOT NULL,
+  `equdate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `r_equi`
+--
+
+INSERT INTO `r_equi` (`equempv`, `equvol`, `equdate`) VALUES
+(4, 1, '2020-01-01'),
+(4, 1, '2020-03-03');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `r_fournit`
+--
+
+CREATE TABLE `r_fournit` (
+  `FOUVOL` int(11) DEFAULT NULL,
+  `FOUESC` int(11) DEFAULT NULL,
+  `HARRESC` time NOT NULL,
+  `DURESC` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `r_fournit`
+--
+
+INSERT INTO `r_fournit` (`FOUVOL`, `FOUESC`, `HARRESC`, `DURESC`) VALUES
+(1, 6, '00:45:00', '00:12:00'),
+(1, 2, '00:09:00', '00:08:00'),
+(1, 3, '00:23:00', '00:04:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `r_menano`
+--
+
+CREATE TABLE `r_menano` (
+  `ANOTXT` int(11) DEFAULT NULL,
+  `ANOANO` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `r_menorg`
+--
+
+CREATE TABLE `r_menorg` (
+  `ORGTXT` int(11) DEFAULT NULL,
+  `ORGORG` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `r_menrep`
+--
+
+CREATE TABLE `r_menrep` (
+  `REPTXT` int(11) DEFAULT NULL,
+  `REPREP` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `r_prog`
+--
+
+CREATE TABLE `r_prog` (
+  `progvol` int(11) DEFAULT NULL,
+  `progjour` date DEFAULT NULL,
+  `HDEP` time NOT NULL,
+  `progtype` varchar(15) NOT NULL,
+  `est_affecter` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `r_prog`
+--
+
+INSERT INTO `r_prog` (`progvol`, `progjour`, `HDEP`, `progtype`, `est_affecter`) VALUES
+(1, '2020-03-06', '22:00:00', 'A100', 3),
+(2, '2020-03-06', '23:00:00', 'A200', 2),
+(3, '2020-03-06', '21:20:00', 'A100', 3),
+(4, '2020-03-06', '23:55:00', 'A100', 3),
+(1, '2020-03-07', '04:00:00', 'A400', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `up`
+--
+
+CREATE TABLE `up` (
+  `SELECTed` int(1) DEFAULT NULL,
+  `updateTime` int(8) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `up`
+--
+
+INSERT INTO `up` (`SELECTed`, `updateTime`) VALUES
+(3, 1800000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `username` varchar(40) NOT NULL,
+  `pass` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`username`, `pass`) VALUES
+('a', 'a'),
+('admin', '123'),
+('b', 'b'),
+('c', 'c');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vol`
+--
+
+CREATE TABLE `vol` (
+  `NUMVOL` int(11) NOT NULL,
+  `VILDEP` varchar(30) DEFAULT NULL,
+  `VILARR` varchar(30) DEFAULT NULL,
+  `DURVOL` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `vol`
+--
+
+INSERT INTO `vol` (`NUMVOL`, `VILDEP`, `VILARR`, `DURVOL`) VALUES
+(1, 'Annaba', 'Alger', '01:00:00'),
+(2, 'Annaba', 'Setif', '00:30:00'),
+(3, 'Annaba', 'Oran', '02:15:00'),
+(4, 'Constantine', 'Alger', '00:50:00'),
+(5, 'Constantine', 'Oran', '01:20:00');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `anocon`
+--
+ALTER TABLE `anocon`
+  ADD PRIMARY KEY (`NUMANO`);
+
+--
+-- Indexes for table `avion`
+--
+ALTER TABLE `avion`
+  ADD PRIMARY KEY (`NUMAV`);
+
+--
+-- Indexes for table `emp`
+--
+ALTER TABLE `emp`
+  ADD PRIMARY KEY (`NUMEMP`);
+
+--
+-- Indexes for table `escale`
+--
+ALTER TABLE `escale`
+  ADD PRIMARY KEY (`NUMESC`);
+
+--
+-- Indexes for table `jvol`
+--
+ALTER TABLE `jvol`
+  ADD PRIMARY KEY (`jour`);
+
+--
+-- Indexes for table `orgcha`
+--
+ALTER TABLE `orgcha`
+  ADD PRIMARY KEY (`NUMORG`);
+
+--
+-- Indexes for table `raptxt`
+--
+ALTER TABLE `raptxt`
+  ADD PRIMARY KEY (`NUMTXT`),
+  ADD KEY `AVIONREV` (`AVIONREV`),
+  ADD KEY `ECRETEUR` (`ECRETEUR`);
+
+--
+-- Indexes for table `repeff`
+--
+ALTER TABLE `repeff`
+  ADD PRIMARY KEY (`NUMREP`);
+
+--
+-- Indexes for table `r_equi`
+--
+ALTER TABLE `r_equi`
+  ADD PRIMARY KEY (`equempv`,`equvol`,`equdate`),
+  ADD KEY `equvol` (`equvol`),
+  ADD KEY `equdate` (`equdate`);
+
+--
+-- Indexes for table `r_fournit`
+--
+ALTER TABLE `r_fournit`
+  ADD KEY `FOUESC` (`FOUESC`),
+  ADD KEY `FOUVOL` (`FOUVOL`);
+
+--
+-- Indexes for table `r_menano`
+--
+ALTER TABLE `r_menano`
+  ADD KEY `ANOANO` (`ANOANO`),
+  ADD KEY `ANOTXT` (`ANOTXT`);
+
+--
+-- Indexes for table `r_menorg`
+--
+ALTER TABLE `r_menorg`
+  ADD KEY `ORGORG` (`ORGORG`),
+  ADD KEY `ORGTXT` (`ORGTXT`);
+
+--
+-- Indexes for table `r_menrep`
+--
+ALTER TABLE `r_menrep`
+  ADD KEY `REPREP` (`REPREP`),
+  ADD KEY `REPTXT` (`REPTXT`);
+
+--
+-- Indexes for table `r_prog`
+--
+ALTER TABLE `r_prog`
+  ADD KEY `progvol` (`progvol`),
+  ADD KEY `progjour` (`progjour`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `vol`
+--
+ALTER TABLE `vol`
+  ADD PRIMARY KEY (`NUMVOL`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `raptxt`
+--
+ALTER TABLE `raptxt`
+  ADD CONSTRAINT `raptxt_ibfk_1` FOREIGN KEY (`AVIONREV`) REFERENCES `avion` (`NUMAV`),
+  ADD CONSTRAINT `raptxt_ibfk_2` FOREIGN KEY (`ECRETEUR`) REFERENCES `emp` (`NUMEMP`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `r_equi`
+--
+ALTER TABLE `r_equi`
+  ADD CONSTRAINT `r_equi_ibfk_2` FOREIGN KEY (`equvol`) REFERENCES `vol` (`NUMVOL`),
+  ADD CONSTRAINT `r_equi_ibfk_3` FOREIGN KEY (`equempv`) REFERENCES `emp` (`NUMEMP`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `r_equi_ibfk_4` FOREIGN KEY (`equdate`) REFERENCES `jvol` (`jour`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `r_fournit`
+--
+ALTER TABLE `r_fournit`
+  ADD CONSTRAINT `r_fournit_ibfk_3` FOREIGN KEY (`FOUESC`) REFERENCES `escale` (`NUMESC`),
+  ADD CONSTRAINT `r_fournit_ibfk_4` FOREIGN KEY (`FOUVOL`) REFERENCES `vol` (`NUMVOL`) ON DELETE SET NULL ON UPDATE SET NULL;
+
+--
+-- Constraints for table `r_menano`
+--
+ALTER TABLE `r_menano`
+  ADD CONSTRAINT `r_menano_ibfk_2` FOREIGN KEY (`ANOANO`) REFERENCES `anocon` (`NUMANO`),
+  ADD CONSTRAINT `r_menano_ibfk_3` FOREIGN KEY (`ANOTXT`) REFERENCES `raptxt` (`NUMTXT`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `r_menorg`
+--
+ALTER TABLE `r_menorg`
+  ADD CONSTRAINT `r_menorg_ibfk_2` FOREIGN KEY (`ORGORG`) REFERENCES `orgcha` (`NUMORG`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `r_menorg_ibfk_3` FOREIGN KEY (`ORGTXT`) REFERENCES `raptxt` (`NUMTXT`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `r_menrep`
+--
+ALTER TABLE `r_menrep`
+  ADD CONSTRAINT `r_menrep_ibfk_2` FOREIGN KEY (`REPREP`) REFERENCES `repeff` (`NUMREP`),
+  ADD CONSTRAINT `r_menrep_ibfk_3` FOREIGN KEY (`REPTXT`) REFERENCES `raptxt` (`NUMTXT`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `r_prog`
+--
+ALTER TABLE `r_prog`
+  ADD CONSTRAINT `r_prog_ibfk_1` FOREIGN KEY (`progvol`) REFERENCES `vol` (`NUMVOL`),
+  ADD CONSTRAINT `r_prog_ibfk_2` FOREIGN KEY (`progjour`) REFERENCES `jvol` (`jour`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
